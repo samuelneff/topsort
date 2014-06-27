@@ -122,7 +122,21 @@ var sorted = topsort(edges);
 */
 ```
 
-Here'we we've specified that 1 must be before 2 and 2 must be before 3 but also that 3 must be before 1. This is an impossible circular dependency and results in an appropriate and detailed error.
+Here we've specified that 1 must be before 2 and 2 must be before 3 but also that 3 must be before 1. This is an impossible circular dependency and results in an appropriate and detailed error.
+
+An options object can be provided which tells `topsort` to continue even on a circular dependency error. 
+
+```js
+var edges = [
+    [1, 2],
+    [2, 3],
+    [3, 1]
+];
+var sorted = topsort(edges, {continueOnCircularDependency: true});
+// sorted = indeterminate, but will have 1, 2, and 3 in it with some dependencies adhered to...
+```
+
+In this case all of the items will be returned in the "sorted" array. The complete order of the sorted array is not guaranteed. Some dependencies will be preserved, but some will not since they are impossible. It is not easily identifiable in advance which dependency will be ignored.
 
 ## Credit
 
@@ -136,5 +150,5 @@ The TypeScript definition of `topsort` is:
 
 ```ts
 import topsort = require('topsort');
-topsort<T>(edges:T[][]):T[] { }
+topsort<T>(edges:T[][], options?:{continueOnCircularDependency: boolean}):T[] { }
 ```
