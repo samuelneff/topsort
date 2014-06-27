@@ -1,7 +1,7 @@
 {
   "name": "topsort",
   "description": "Topological sort in JavaScript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/samuelneff/topsort",
   "author": {
     "name": "Samuel Neff",

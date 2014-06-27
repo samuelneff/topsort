@@ -30,8 +30,9 @@ function sortDesc(a, b) {
  *
  * @returns Array : topological sorted list of IDs
  **/
-function topsort<T>(edges:T[][]):T[] {
+function topsort<T>(edges:T[][], options?:{continueOnCircularDependency: boolean}):T[] {
     var nodes: {[key:string]: EdgeNode<T> }   = {};
+    options = options || {continueOnCircularDependency: false};
 
     var sorted:T[]  = [];
 
@@ -87,6 +88,10 @@ function topsort<T>(edges:T[][]):T[] {
         node.afters.forEach(function(afterID:T) {
             // if already in ancestors, a closed chain exists.
             if (ancestors.indexOf(afterID) >= 0) {
+                if (options.continueOnCircularDependency)
+                {
+                    return;
+                }
                 throw new Error('Circular chain found: ' + id + ' must be before ' + afterID + ' due to a direct order specification, but ' + afterID + ' must be before ' + id + ' based on other specifications.');
             }
 

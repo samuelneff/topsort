@@ -136,6 +136,41 @@ describe("Topological sort tests", function () {
         expect(doIt).toThrow();
     });
 
+    it("Ignore simple circular reference error", function() {
+        var edges:number[][] = [
+            [1, 2],
+            [2, 1]
+        ];
+
+        var actual:number[] = topsort(edges, {continueOnCircularDependency: true});
+
+        // order is not specified or guaranteed in any way when circular dependencies exist
+        // only guarantee is that all items will be returned once each
+
+        // confirm 2 items returned..
+        expect(actual.length).toBe(2);
+        expect(actual).toContain(1);
+        expect(actual).toContain(2);
+    });
+
+    it("Ignore complex circular reference error", function() {
+        var edges:number[][] = [
+            [1, 2],
+            [2, 3],
+            [3, 1]
+        ];
+        var actual:number[] = topsort(edges, {continueOnCircularDependency: true});
+
+        // order is not specified or guaranteed in any way when circular dependencies exist
+        // only guarantee is that all items will be returned once each
+
+        // confirm 3 items returned..
+        expect(actual.length).toBe(3);
+        expect(actual).toContain(1);
+        expect(actual).toContain(2);
+        expect(actual).toContain(3);
+    });
+
     it("one, two, three, four, five, six, seven, eight, nine", function() {
         var edges:string[][] =
         [
