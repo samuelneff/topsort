@@ -184,5 +184,21 @@ describe("Topological sort tests", function () {
         var actual:number[] = topsort(edges);
         expect(actual).toEqual(expected);
     });
-});
 
+    it("6,5,4, 10,11,12,  22,21,20, again..", function () {
+        var edges:number[][] = [
+            [6, 5],
+            [5, 4],
+            [22, 21],
+            [21, 20],
+            [4, 22],
+            [10],
+            [11],
+            [12]
+        ];
+
+        var expected:number[] = [10, 11, 12, 6, 5, 4, 22, 21, 20];
+        var actual:number[] = topsort(edges);
+        expect(actual).toEqual(expected);
+    });
+});

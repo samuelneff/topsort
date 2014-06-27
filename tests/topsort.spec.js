@@ -124,11 +124,11 @@ describe("Topological sort tests", function () {
     });
 
     it("Complex circular reference error", function () {
-var edges = [
-    [1, 2],
-    [2, 3],
-    [3, 1]
-];
+        var edges = [
+            [1, 2],
+            [2, 3],
+            [3, 1]
+        ];
         var doIt = function () {
             topsort(edges);
         };
@@ -162,22 +162,39 @@ var edges = [
 
     it("6,5,4, 10,11,12,  22,21,20", function () {
         var edges = [
-  [6, 5],
-  [5, 4],
-  [4, 11],
-  [4, 10],
-  [4, 12],
-  [12, 20],
-  [11, 20],
-  [10, 20],
-  [10, 22],
-  [11, 22],
-  [12, 22],
-  [22, 21],
-  [21, 20]
+            [6, 5],
+            [5, 4],
+            [4, 11],
+            [4, 10],
+            [4, 12],
+            [12, 20],
+            [11, 20],
+            [10, 20],
+            [10, 22],
+            [11, 22],
+            [12, 22],
+            [22, 21],
+            [21, 20]
         ];
 
         var expected = [6, 5, 4, 10, 11, 12, 22, 21, 20];
+        var actual = topsort(edges);
+        expect(actual).toEqual(expected);
+    });
+
+    it("6,5,4, 10,11,12,  22,21,20, again..", function () {
+        var edges = [
+            [6, 5],
+            [5, 4],
+            [22, 21],
+            [21, 20],
+            [4, 22],
+            [10],
+            [11],
+            [12]
+        ];
+
+        var expected = [10, 11, 12, 6, 5, 4, 22, 21, 20];
         var actual = topsort(edges);
         expect(actual).toEqual(expected);
     });
