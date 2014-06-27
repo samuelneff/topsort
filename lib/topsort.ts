@@ -81,14 +81,13 @@ function topsort<T>(edges:T[][]):T[] {
         var ancestors:T[] = Array.isArray(ancestorsIn) ? ancestorsIn : [];
 
         ancestors.push(id);
-
         visited[idstr] = true;
 
         node.afters.sort(sortDesc);
         node.afters.forEach(function(afterID:T) {
             // if already in ancestors, a closed chain exists.
             if (ancestors.indexOf(afterID) >= 0) {
-                throw new Error('Circular chain found: ' + afterID + ' is in ' + id);
+                throw new Error('Circular chain found: ' + id + ' must be before ' + afterID + ' due to a direct order specification, but ' + afterID + ' must be before ' + id + ' based on other specifications.');
             }
 
             // recursive call
