@@ -124,15 +124,62 @@ describe("Topological sort tests", function () {
     });
 
     it("Complex circular reference error", function () {
-        var edges = [
-            [1, 2],
-            [2, 3],
-            [3, 1]
-        ];
+var edges = [
+    [1, 2],
+    [2, 3],
+    [3, 1]
+];
         var doIt = function () {
             topsort(edges);
         };
         expect(doIt).toThrow();
+    });
+
+    it("one, two, three, four, five, six, seven, eight, nine", function () {
+        var edges = [
+            ['two', 'three'],
+            ['four', 'six'],
+            ['one', 'three'],
+            ['two', 'four'],
+            ['six', 'nine'],
+            ['five', 'seven'],
+            ['five', 'eight'],
+            ['five', 'nine'],
+            ['seven', 'eight'],
+            ['eight', 'nine'],
+            ['one', 'two'],
+            ['four', 'five'],
+            ['four', 'six'],
+            ['three', 'six'],
+            ['six', 'seven'],
+            ['three', 'four']
+        ];
+
+        var expected = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        var actual = topsort(edges);
+        expect(actual).toEqual(expected);
+    });
+
+    it("6,5,4, 10,11,12,  22,21,20", function () {
+        var edges = [
+  [6, 5],
+  [5, 4],
+  [4, 11],
+  [4, 10],
+  [4, 12],
+  [12, 20],
+  [11, 20],
+  [10, 20],
+  [10, 22],
+  [11, 22],
+  [12, 22],
+  [22, 21],
+  [21, 20]
+        ];
+
+        var expected = [6, 5, 4, 10, 11, 12, 22, 21, 20];
+        var actual = topsort(edges);
+        expect(actual).toEqual(expected);
     });
 });
 //# sourceMappingURL=topsort.spec.js.map
