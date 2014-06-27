@@ -1,0 +1,36 @@
+{
+  "name": "topsort",
+  "description": "Topological sort in JavaScript",
+  "version": "0.0.1",
+  "homepage": "https://github.com/samuelneff/topsort",
+  "author": {
+    "name": "Samuel Neff",
+    "url": "https://github.com/samuelneff"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/samuelneff/topsort.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samuelneff/topsort/issues"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-node" : "1.14.3"
+  },
+  "keywords": [
+    "sort", "algorithm"
+  ]
+}
