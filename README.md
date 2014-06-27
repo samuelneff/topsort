@@ -85,6 +85,26 @@ var sorted = topsort(edges);
 
 Here we've provided dependency rules that specify the order for 6,5,4 and then for 22,21,20, and that 6,5,4 must be before 10,11,12, and that 10,11,12 must be before 22,21,20, but no where in the list of dependencies do we specify that 10 is before 11 or that 11 is before 12. That sorting results from the default numerical sort on groups of items that are together but otherwise without dependencies.
 
+We can also include additional values as an array of individual values to be included in the final list even if there are no specific dependencies. Items that are included and are not dependent on anything else will be sorted at the front of the list.
+
+```js
+var edges = [
+    [6, 5],
+    [5, 4],
+    [22, 21],
+    [21, 20],
+    [4, 22],
+    [11],
+    [10],
+    [12]
+];
+
+var sorted = topsort(edges);
+// sorted = [10, 11, 12, 6, 5, 4, 22, 21, 20];
+```
+
+Here we specified ordering that forced 6, 5, 4, 22, 21, 20 into the order shown, but 10, 11, and 12 are not dependent on anything so they show up first, in numerically sorted order.
+
 Finally, circular dependencies are identified and an error is thrown:
 
 ```js
