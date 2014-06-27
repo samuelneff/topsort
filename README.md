@@ -131,3 +131,10 @@ This project is very largely based on the topsort algorithm from Shin Suzuki who
 ## TypeScript Support
 
 The package is written in TypeScript and both the TypeScript and JavaScript files are included. TypeScript users can import the typed topsort function and benefit from typings whereas JavaScript users can use the JavaScript function normally and totally ignore the TypeScript files.
+
+The TypeScript definition of `topsort` is:
+
+```ts
+import topsort = require('topsort');
+topsort<T>(edges:T[][]):T[] { }
+```
