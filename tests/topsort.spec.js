@@ -111,5 +111,28 @@ describe("Topological sort tests", function () {
         var actual = topsort(edges);
         expect(actual).toEqual(expected);
     });
+
+    it("Simple circular reference error", function () {
+        var edges = [
+            [1, 2],
+            [2, 1]
+        ];
+        var doIt = function () {
+            topsort(edges);
+        };
+        expect(doIt).toThrow();
+    });
+
+    it("Complex circular reference error", function () {
+        var edges = [
+            [1, 2],
+            [2, 3],
+            [3, 1]
+        ];
+        var doIt = function () {
+            topsort(edges);
+        };
+        expect(doIt).toThrow();
+    });
 });
 //# sourceMappingURL=topsort.spec.js.map
