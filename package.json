@@ -23,13 +23,11 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node" : "1.14.3"
+    "jasmine-node" : "~1.14.3"
   },
+  "main": "./lib/topsort",
   "keywords": [
     "sort", "algorithm"
   ]
