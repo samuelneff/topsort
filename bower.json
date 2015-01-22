@@ -1,0 +1,16 @@
+{
+  "name": "topsort",
+  "version": "0.0.2",
+  "homepage": "https://github.com/samuelneff/topsort",
+  "authors": [
+    "Samuel Neff"
+  ],
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
