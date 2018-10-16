@@ -17,7 +17,6 @@ var EdgeNode = /** @class */ (function () {
     }
     return EdgeNode;
 }());
-exports.EdgeNode = EdgeNode;
 function sortDesc(a, b) {
     if (a < b) {
         return 1;

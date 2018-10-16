@@ -1,8 +1,3 @@
-export declare class EdgeNode<T> {
-    id: T;
-    afters: T[];
-    constructor(id: T);
-}
 /**
  * General topological sort
  * @param edges List of edges. Each edge forms an []Array<ID,ID> e.g. [12, 3]

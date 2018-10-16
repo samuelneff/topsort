@@ -9,7 +9,7 @@
 * https://gist.github.com/shinout/1232505
 */
 
-export class EdgeNode<T> {
+class EdgeNode<T> {
   public afters: T[] = [];
   constructor(public id: T) { }
 }
