@@ -17,7 +17,7 @@ var sorted = topsort(edges);
 // sorted = [1, 2, 3];
 ```
 
-Here we're providing two pairs of numbers, first 1 and 2 where 1 must come before 2. Then 2 and 3 where 2 must come before 3. 
+Here we're providing two pairs of numbers, first 1 and 2 where 1 must come before 2. Then 2 and 3 where 2 must come before 3.
 
 We can reverse the dependencies like this:
 
@@ -115,16 +115,16 @@ var edges = [
 ];
 var sorted = topsort(edges);
 /*
-  Error: 
-  
-  Circular chain found: 2 must be before 3 due to a direct order specification, 
+  Error:
+
+  Circular chain found: 2 must be before 3 due to a direct order specification,
   but 3 must be before 2 based on other specifications.
 */
 ```
 
 Here we've specified that 1 must be before 2 and 2 must be before 3 but also that 3 must be before 1. This is an impossible circular dependency and results in an appropriate and detailed error.
 
-An options object can be provided which tells `topsort` to continue even on a circular dependency error. 
+An options object can be provided which tells `topsort` to continue even on a circular dependency error.
 
 ```js
 var edges = [
@@ -149,6 +149,6 @@ The package is written in TypeScript and both the TypeScript and JavaScript file
 The TypeScript definition of `topsort` is:
 
 ```ts
-import topsort = require('topsort');
+import { topsort } from 'topsort';
 topsort<T>(edges:T[][], options?:{continueOnCircularDependency: boolean}):T[] { }
 ```
